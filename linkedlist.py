@@ -36,10 +36,10 @@ class LinkedList:
         return format_str.format(list_str)
 
     def __iter__(self):
-        self._iter = self.head
-        while self._iter:
-            yield self._iter.obj
-            self._iter = self._iter.next_node
+        iter = self.head
+        while iter:
+            yield iter.obj
+            iter = iter.next_node
 
     def __add__(self, other):
         new_list = LinkedList()
@@ -87,8 +87,12 @@ if __name__ == '__main__':
     llist2 = LinkedList()
     llist2.extend([5, 6, 7])
 
-    llist3 = llist + llist2
+    llist3 = LinkedList()
+    llist3.extend([12, 21, 32])
+
+    new_list = llist + llist2 + llist3
 
     print(llist)
     print(llist2)
-    print(llist3)
+    print(new_list)
+    print(len(new_list))
