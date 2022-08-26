@@ -36,10 +36,10 @@ class LinkedList:
         return format_str.format(list_str)
 
     def __iter__(self):
-        iter = self.head
-        while iter:
-            yield iter.obj
-            iter = iter.next_node
+        iter_obj = self.head
+        while iter_obj:
+            yield iter_obj.obj
+            iter_obj = iter_obj.next_node
 
     def __add__(self, other):
         new_list = LinkedList()
