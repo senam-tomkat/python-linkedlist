@@ -41,6 +41,12 @@ class LinkedList:
             yield self._iter.obj
             self._iter = self._iter.next_node
 
+    def __add__(self, other):
+        new_list = LinkedList()
+        new_list.extend(self)
+        new_list.extend(other)
+        return new_list
+
     @property
     def head(self):
         return self._head
@@ -69,17 +75,20 @@ class LinkedList:
             node.next_node = None
         self._size += 1
 
-    def append_list(self, lst):
+    def extend(self, lst):
         for x in lst:
             self.append(x)
 
 
 if __name__ == '__main__':
     llist = LinkedList()
-    llist.append_list([1, 2, 3, 4, 5, 6, 7])
+    llist.extend([1, 2, 3, 4])
+
+    llist2 = LinkedList()
+    llist2.extend([5, 6, 7])
+
+    llist3 = llist + llist2
 
     print(llist)
-
-    l = list(map(lambda x: x * 2, llist))
-    print(l)
-
+    print(llist2)
+    print(llist3)
